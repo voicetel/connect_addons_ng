@@ -61,11 +61,35 @@ them), SMS send/receive, webhook signature validation.
 
 Not yet implemented:
 
-- **Softphone UI** — the JsSIP client is not vendored yet; see
-  `static/src/js/utils.js` for the wiring plan.
+- **Softphone keypad / transfer UI** — the JsSIP client (vendored in
+  `static/src/lib/jssip.min.js`) registers and answers, but there is no
+  dialpad, recents or transfer flow yet.
 - **OutgoingCallerIds / ValidationRequests / Balance** — served by VoiceML but
   not yet wrapped by `voiceml-python-sdk`; the module talks to the first two
   over raw HTTP and omits Balance.
 - **WhatsApp** — VoiceML messaging is SMS/MMS only.
 - Recording start/stop controls and blind transfer (Twilio-specific APIs with
   no direct VoiceML SDK counterpart yet).
+
+## Verification
+
+Two test layers, plus the live pass in `live-test.md`:
+
+1. **Odoo tests** (needs an Odoo 19 instance):
+
+   ```bash
+   oduflow run_odoo_tests connect_voiceml
+   # or: ./odoo-bin -d <db> -i connect_voiceml --test-enable --test-tags /connect_voiceml --stop-after-init
+   ```
+
+2. **REST contract test** (no Odoo, no VoiceML fleet — verifies every REST call
+   the module makes against a mock server):
+
+   ```bash
+   PYTHONPATH=<path-to-voiceml-python-sdk>/src \
+     python3 connect_voiceml/tools/rest_contract.py
+   ```
+
+   Requires `voiceml` + `httpx` + `pydantic` on `PYTHONPATH`. It asserts the
+   exact HTTP method, path (`.json` suffix, SIP and routes-v2 sub-paths), Basic
+   auth, and form field names for all 23 requests.
