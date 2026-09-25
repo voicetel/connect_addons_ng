@@ -1,14 +1,14 @@
 # connect_voiceml — live test runbook
 
 How to take the scaffold from "installed" to "a call ran through VoiceML
-(callBroadcast) end to end". This is the acceptance pass that decides whether
+end to end". This is the acceptance pass that decides whether
 the provider is worth polishing further.
 
 ## 0. Prerequisites
 
 - An Odoo 19.0 instance with `connect` installed and a database with the
   `voiceml` python package available (`pip install voiceml`).
-- A VoiceML (callBroadcast) tenant: an `AccountSid` and an API key. The API
+- A VoiceML tenant: an `AccountSid` and an API key. The API
   key is both the REST auth token and the webhook `X-Twilio-Signature` key.
 - The VoiceML OpenSIPS registrar's public `wss://` URL (see below).
 
@@ -34,7 +34,7 @@ Connect → VoiceML → Configuration → Settings:
 | VoiceML API URL | `https://voiceml.voicetel.com` |
 | WebRTC WSS URL | `wss://<node>:8443` |
 
-Node public IPs (from `callBroadcast-opensips/docs/DESIGN-dev-cluster.md`):
+Node public IPs (from the OpenSIPS design doc):
 `east-1` 3.220.193.70, `east-2` 3.12.226.65, `west-1` 52.9.10.85. OpenSIPS
 listeners: SIP 7060 (UDP/TCP), TLS 7061, **WSS 8443**, WS 8442.
 
@@ -82,7 +82,7 @@ configured destination (user / callflow / application).
 
 ## 7. What to watch on the VoiceML side
 
-- Node journal: `journalctl -u callBroadcast -n 200` for the TwiML fetch,
+- Node journal: `journalctl -n 200` for the TwiML fetch,
   originate and callback lines.
 - The SIP credential must appear under the domain's credential list.
 

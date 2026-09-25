@@ -1,8 +1,7 @@
-# VoiceML (callBroadcast) integration
+# VoiceML integration
 
 `connect_voiceml` is the provider module for **VoiceML** — VoiceTel's
-Twilio-wire-compatible voice + SMS + AMD (answering-machine detection) service,
-also known as callBroadcast.
+Twilio-wire-compatible voice + SMS + AMD (answering-machine detection) service.
 
 Because VoiceML speaks the same REST surface and TwiML as Twilio, this module
 is built in the image of `connect_twilio` (ADR-031 / ADR-032). It is fully

@@ -14,7 +14,7 @@
                                 <group string="VoiceML Credentials" name="voiceml_api">
                                     <div colspan="2">
                                         <small>Account SID and API key come from your VoiceML
-                                            (callBroadcast) tenant. The API key is both the SDK
+                                            tenant. The API key is both the SDK
                                             auth token and the webhook signature key.</small>
                                     </div>
                                     <field name="account_sid"/>

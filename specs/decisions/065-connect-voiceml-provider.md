@@ -1,9 +1,9 @@
-# 065: connect_voiceml — VoiceML (callBroadcast) provider module
+# 065: connect_voiceml — VoiceML provider module
 
 ## Problem
 
 Add VoiceTel's **VoiceML** (the Twilio-wire-compatible voice + SMS + AMD
-service, also known as callBroadcast) as another telephony provider. Per
+service) as another telephony provider. Per
 ADR-031 the module must be fully autonomous: it owns its PBX configuration
 models (`connect.voiceml.*`), extends only the shared ledger models
 (`connect.call`, `connect.channel`, `connect.message`, `connect.recording`,

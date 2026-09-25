@@ -4,7 +4,7 @@
     'version': '19.0.1.0.0',
     'author': 'Oduist',
     'category': 'Phone',
-    'summary': 'VoiceML (callBroadcast) integration for Oduist Connect',
+    'summary': 'VoiceML integration for Oduist Connect',
     'depends': ['connect'],
     'external_dependencies': {
         'python': ['voiceml'],

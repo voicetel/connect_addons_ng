@@ -1,7 +1,7 @@
-# connect_voiceml — VoiceML (callBroadcast) module spec
+# connect_voiceml — VoiceML module spec
 
 Provider module for **VoiceML** — VoiceTel's Twilio-wire-compatible voice + SMS
-+ AMD service (callBroadcast). Built in the image of `connect_twilio`
++ AMD service. Built in the image of `connect_twilio`
 (ADR-031 / ADR-032); design decisions live in
 `specs/decisions/065-connect-voiceml-provider.md`.
 

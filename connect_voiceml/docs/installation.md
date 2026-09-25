@@ -1,6 +1,6 @@
 # Oduist Connect VoiceML — installation
 
-VoiceML (callBroadcast) provider module for Oduist Connect.
+VoiceML provider module for Oduist Connect.
 
 ## What this is
 

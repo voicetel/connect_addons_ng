@@ -43,7 +43,7 @@ class Settings(models.Model):
     display_api_key = fields.Char()
     voiceml_base_url = fields.Char(
         string="VoiceML API URL",
-        help="Base URL of the VoiceML (callBroadcast) REST API, e.g. "
+        help="Base URL of the VoiceML REST API, e.g. "
         "https://voiceml.voicetel.com. The VoiceML SDK is pointed here.",
     )
     voiceml_wss_url = fields.Char(

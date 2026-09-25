@@ -31,7 +31,7 @@ class OutgoingCallerId(models.Model):
         """httpx client for the OutgoingCallerIds REST surface.
 
         The VoiceML SDK does not yet wrap OutgoingCallerIds /
-        ValidationRequests, so this module talks to callBroadcast directly
+        ValidationRequests, so this module talks to the VoiceML API directly
         until the SDK exposes them (tracked as a follow-up). Auth is the same
         HTTP Basic (sid:api_key) the SDK uses everywhere else.
         """
