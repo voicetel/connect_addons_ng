@@ -26,8 +26,9 @@
     ],
     'assets': {
         'web.assets_backend': [
-            'connect_voiceml/static/src/js/main.js',
+            'connect_voiceml/static/src/lib/jssip.min.js',
             'connect_voiceml/static/src/js/utils.js',
+            'connect_voiceml/static/src/js/main.js',
             'connect_voiceml/static/src/components/phone/*/*',
         ],
     },

@@ -182,7 +182,6 @@ class User(models.Model):
                         if not self.env.context.get('skip_create_credential'):
                             rec.sid = rec._create_sip_account(
                                 username=rec.username, password=rec.password)
-                        rec.with_context(skip_sync=True).password = '*' * len(rec.password)
                 except Exception as e:
                     raise ValidationError(format_connect_response(str(e)))
         return recs
@@ -194,15 +193,11 @@ class User(models.Model):
                 rec.username and rec.username != vals['username'] for rec in self):
             raise ValidationError('Username cannot be changed!')
         for rec in self:
-            if vals.get('password'):
-                if not self.env["connect.settings"].get_param("voiceml_auto_sync"):
-                    vals['password'] = '*' * len(vals['password'])
+            if vals.get('password') and self.env["connect.settings"].get_param("voiceml_auto_sync"):
+                if rec.sid:
+                    rec._update_sip_password(vals['password'])
                 else:
-                    if rec.sid:
-                        rec._update_sip_password(vals['password'])
-                    else:
-                        vals['sid'] = rec._create_sip_account(rec.username, vals['password'])
-                    vals['password'] = '*' * len(vals['password'])
+                    vals['sid'] = rec._create_sip_account(rec.username, vals['password'])
         return super().write(vals)
 
     def unlink(self):
