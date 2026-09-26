@@ -16,9 +16,13 @@ the VoiceML **OpenSIPS WSS edge**, not the Twilio Voice JS SDK.
 VoiceML is VoiceTel's voice + SMS + AMD service. To use `connect_voiceml` you
 need a VoiceML account (`AccountSid`) and an API key:
 
-1. **Sign up** — visit [voicetel.com](https://voicetel.com) or contact VoiceTel
-   directly. VoiceTel provisions a VoiceML account for you.
-2. You receive two values:
+1. **Sign up** at <https://voicetel.com/signup/> — enter your name and email;
+   VoiceTel sends an activation link. Activation is conditional on completing
+   **Know Your Customer (KYC)** verification (government photo ID, a utility
+   bill, and a signed statement of intended traffic).
+2. **Sign in to the carrier portal** at <https://www.voicetel.com/> to add
+   billing, configure services, and provision numbers. VoiceTel provisions a
+   VoiceML account (`AccountSid` + API key) for you:
    - **Account SID** — a Twilio-format identifier (`AC` + 32 hex chars).
    - **API key** — the HTTP Basic password *and* the `X-Twilio-Signature`
      verification key for inbound webhooks.
@@ -26,8 +30,8 @@ need a VoiceML account (`AccountSid`) and an API key:
    (and again only when rotated); it can never be re-read afterwards. If you
    lose it, contact VoiceTel to rotate the key — the old key is invalidated.
 4. Once provisioned you can self-manage the account (numbers, SIP domains +
-   credential lists, caller IDs, SMS configuration) from the tenant portal at
-   `https://<your-hostname>/portal/`, logging in with the Account SID + API key.
+   credential lists, caller IDs, SMS configuration) from the carrier portal,
+   or from the VoiceML console at <https://voiceml.voicetel.com>.
 
 The REST API host is `https://voiceml.voicetel.com` (the **VoiceML API URL**
 field below); the full API reference lives at
