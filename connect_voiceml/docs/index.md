@@ -3,6 +3,10 @@
 `connect_voiceml` is the provider module for **VoiceML** — VoiceTel's
 Twilio-wire-compatible voice + SMS + AMD (answering-machine detection) service.
 
+> **No account yet?** Sign up at [voicetel.com](https://voicetel.com); VoiceTel
+> provisions a VoiceML account (`AccountSid` + API key). The API key is shown
+> exactly once — save it immediately. See `installation.md` for the full flow.
+
 Because VoiceML speaks the same REST surface and TwiML as Twilio, this module
 is built in the image of `connect_twilio` (ADR-031 / ADR-032). It is fully
 autonomous: it owns its PBX configuration models (`connect.voiceml.*`), extends

@@ -11,12 +11,34 @@ service — instead of Twilio. REST calls go through the official
 browser softphone is a **JsSIP (SIP-over-WebRTC)** client registering against
 the VoiceML **OpenSIPS WSS edge**, not the Twilio Voice JS SDK.
 
+## Getting your VoiceML credentials
+
+VoiceML is VoiceTel's voice + SMS + AMD service. To use `connect_voiceml` you
+need a VoiceML account (`AccountSid`) and an API key:
+
+1. **Sign up** — visit [voicetel.com](https://voicetel.com) or contact VoiceTel
+   directly. VoiceTel provisions a VoiceML account for you.
+2. You receive two values:
+   - **Account SID** — a Twilio-format identifier (`AC` + 32 hex chars).
+   - **API key** — the HTTP Basic password *and* the `X-Twilio-Signature`
+     verification key for inbound webhooks.
+3. **Save the API key immediately.** It is shown exactly once at provisioning
+   (and again only when rotated); it can never be re-read afterwards. If you
+   lose it, contact VoiceTel to rotate the key — the old key is invalidated.
+4. Once provisioned you can self-manage the account (numbers, SIP domains +
+   credential lists, caller IDs, SMS configuration) from the tenant portal at
+   `https://<your-hostname>/portal/`, logging in with the Account SID + API key.
+
+The REST API host is `https://voiceml.voicetel.com` (the **VoiceML API URL**
+field below); the full API reference lives at
+<https://voicetel.com/docs/api/v0.9/voiceml/>.
+
 ## Prerequisites
 
 - Odoo 19.0 with `connect` installed.
 - `voiceml` Python package (`pip install voiceml`, or list it in
   `requirements.txt`; it is declared as the module's python dependency).
-- A VoiceML tenant with an `AccountSid` and API key.
+- A VoiceML account (`AccountSid`) and API key — see above.
 - (For the softphone) the VoiceML OpenSIPS registrar's `wss://` URL.
 
 ## Configuration

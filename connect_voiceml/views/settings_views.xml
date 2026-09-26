@@ -13,9 +13,12 @@
                             <group>
                                 <group string="VoiceML Credentials" name="voiceml_api">
                                     <div colspan="2">
-                                        <small>Account SID and API key come from your VoiceML
-                                            tenant. The API key is both the SDK
-                                            auth token and the webhook signature key.</small>
+                                        <small>Don't have an account yet? Sign up at
+                                            <a href="https://voicetel.com" target="_blank">voicetel.com</a>.
+                                            VoiceTel provisions a VoiceML account (Account SID + API key).
+                                            The API key is shown <strong>exactly once</strong> — save it
+                                            immediately; it is both the SDK auth token and the
+                                            webhook signature key.</small>
                                     </div>
                                     <field name="account_sid"/>
                                     <field name="display_api_key" string="API Key" password="1"/>
