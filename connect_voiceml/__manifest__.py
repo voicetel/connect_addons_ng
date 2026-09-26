@@ -19,8 +19,6 @@
         'views/exten_views.xml',
         'views/callflow_views.xml',
         'views/number_views.xml',
-        'views/call_views.xml',
-        'views/message_views.xml',
         'views/outgoing_callerid_views.xml',
         'data/application.xml',
     ],

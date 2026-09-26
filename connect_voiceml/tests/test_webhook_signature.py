@@ -7,12 +7,12 @@ stdlib reimplementation is byte-identical to what connect_twilio's own
 webhook validation accepts.
 """
 
-import unittest
+from odoo.tests.common import TransactionCase
 
 from odoo.addons.connect_voiceml.models import webhook
 
 
-class TestWebhookSignature(unittest.TestCase):
+class TestWebhookSignature(TransactionCase):
 
     def test_canonical_twilio_example(self):
         # Twilio's documented "Validating requests" example, verified against
@@ -65,7 +65,3 @@ class TestWebhookSignature(unittest.TestCase):
             webhook.normalize_url('http://example.com/x'),
             'https://example.com/x',
         )
-
-
-if __name__ == '__main__':
-    unittest.main()

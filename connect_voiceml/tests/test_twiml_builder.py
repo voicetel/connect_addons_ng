@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """Tests for the minimal TwiML builder."""
 
-import unittest
+from odoo.tests.common import TransactionCase
 
 from odoo.addons.connect_voiceml.models.twiml_builder import TwiMLResponse
 
 
-class TestTwiMLBuilder(unittest.TestCase):
+class TestTwiMLBuilder(TransactionCase):
 
     def test_say_hangup(self):
         r = TwiMLResponse()
@@ -52,7 +52,3 @@ class TestTwiMLBuilder(unittest.TestCase):
         xml = r.to_string()
         self.assertIn('<Pause length="1" />', xml)
         self.assertIn('<Reject reason="busy" />', xml)
-
-
-if __name__ == '__main__':
-    unittest.main()

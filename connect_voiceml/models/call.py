@@ -2,10 +2,9 @@
 import json
 import logging
 
-from odoo import fields, models, api
+from odoo import models, api
 
 from odoo.addons.connect.models.settings import debug
-from odoo.addons.connect.models.call import CALL_END_STATUSES
 
 logger = logging.getLogger(__name__)
 
@@ -14,8 +13,6 @@ IGNORE_ERROR_CODES = ['32009']
 
 class Call(models.Model):
     _inherit = 'connect.call'
-
-    call_sid = fields.Char(string='VoiceML Call SID', readonly=True)
 
     @api.model
     def on_call_action(self, params):

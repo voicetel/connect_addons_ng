@@ -40,8 +40,17 @@ class TestNumberRouting(TransactionCase):
             'destination': 'application',
             'application': app.id,
         })
-        xml = self.env['connect.voiceml.number'].route_call(
-            {'Called': '+18005551234'})
+        # route_call feeds connect.call.on_call_status, which expects the full
+        # inbound webhook parameter set, not just the called number.
+        xml = self.env['connect.voiceml.number'].route_call({
+            'Called': '+18005551234',
+            'CallSid': 'CA-test-1',
+            'Caller': '+15551234567',
+            'To': '+18005551234',
+            'Direction': 'inbound',
+            'CallStatus': 'ringing',
+            'CallDuration': '0',
+        })
         self.assertIn('<Hangup', xml)
 
     def test_unconfigured_number_greets(self):
